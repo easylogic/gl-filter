@@ -1,9 +1,6 @@
-import packageJSON from '../package.json'
-import postcss from 'rollup-plugin-postcss'
 import babel from 'rollup-plugin-babel';
 import serve from 'rollup-plugin-serve'
 import livereload from 'rollup-plugin-livereload'
-import autoprefixer from 'autoprefixer'
 import glslify from 'rollup-plugin-glslify';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
@@ -11,27 +8,16 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 export default {
   input: 'src/index.js',
   output: {
-    file: 'addon/' + packageJSON.name + '.js',
+    file: 'addon/gl-filter.js',
     format: 'iife',
-    globals: {
-      "codemirror" : "window.CodeMirror"
-    },
-    external: ['codemirror']
   },
-  name: 'CodeMirrorColorPicker',  
+  name: 'GLFilter',  
   plugins : [
     peerDepsExternal(),
-    serve(),
+    serve({ port: 3000}),
     livereload({watch: 'addon'}),
     glslify({ basedir: 'src/util/glsl/source' }),
     //scss({output : 'addon/' + packageJSON.name + '.css'}),
-    postcss({
-      extract: 'addon/' + packageJSON.name + '.css',
-      plugins: [
-        autoprefixer()
-      ],
-      extensions: ['.scss']
-    }), 
     babel({
       exclude: ['node_modules/**', 'src/util/glsl/source/**'],
       presets: [

@@ -13,8 +13,7 @@
     href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
-    <link rel="stylesheet" href="./addon/codemirror-colorpicker.css" />
-    <script type="text/javascript" src="./addon/codemirror-colorpicker.js" ></script>
+    <script type="text/javascript" src="./addon/gl-filter.js" ></script>
     <meta property="og:title" content="ColorPicker for CodeMirror Addon" />
     <meta property="og:description" content="Very Simple ColorPicker for CodeMirror" />
     <meta property="og:url" content="https://easylogic.github.io/codemirror-colorpicker/" />
@@ -41,7 +40,8 @@
     <button type="button" onclick="show_gl()">Filter</button>
 
     <script type="text/javascript">
-    var Color = CodeMirrorColorPicker.Color
+    console.log(GLFilter);
+    var Color = GLFilter.Color
 
     function show_gl() {
 

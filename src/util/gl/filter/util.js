@@ -28,8 +28,8 @@ function convolutionString (count) {
     }).join(' + \n')
 }
 
-export function multi (str) {
-    return [...arguments]; 
+export function multi (...args) {
+    return args; 
 }
 
 export function convolution(arr) {
@@ -72,15 +72,12 @@ export function makeVertexShaderSource () {
 
         void main() {
             vec2 zeroToOne = a_position / u_resolution;
-
             vec2 zeroToTwo = zeroToOne * 2.0;
-
             vec2 clipSpace = zeroToTwo - 1.0;
 
             gl_Position = vec4(clipSpace * vec2(1, u_flipY), 0, 1);
 
             v_texCoord = a_texCoord;
-
         }
     `
 }
@@ -93,14 +90,13 @@ function makeConvolution(count) {
         vec4 colorSum = ${convolutionString(count)}; 
 
         outColor = vec4((colorSum / u_kernel${count}Weight).rgb, 1);
-        
     }
     `
 }
 
 export function makeFragmentShaderSource (filterShaderList) {
 
-    const filterContent = filterShaderList.filter(f => f.type == 'shader').map(f => f.content).join('\n\n')
+    const filterContent = filterShaderList.filter(f => f.type === 'shader').map(f => f.content).join('\n\n')
 
     const weightTable = {'9': true} 
 

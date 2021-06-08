@@ -1,6 +1,5 @@
 import Canvas from '../Canvas'
 import Matrix from '../Matrix'
-import ImageFilter from './index' 
 import Color from '../Color'
 
 let makeId = 0 
@@ -68,107 +67,6 @@ export function colorMatrix(pixels, i, matrix) {
     )
 }
 
-export function makeFilter(filter) {
-
-    if (typeof filter == 'function') {
-        return filter;
-    }
-
-    if (typeof filter == 'string') {
-        filter = [filter];
-    }
-
-    filter = filter.slice(0);
-    const filterName = filter.shift();
-
-    if (typeof filterName == 'function') {
-        return filterName;
-    }
-
-    const params = filter;
-
-    const filterFunction = ImageFilter[filterName] || LocalFilter[filterName] ;
-
-    if (!filterFunction) {
-        throw new Error(`${filterName} is not filter. please check filter name.`)
-    }
-    return filterFunction.apply(filterFunction, params);
-}
-
-export function forLoop (max, index = 0, step = 1, callback, done, functionDumpCount = 10000, frameTimer = 'full', loopCount = 50) {
-    let runIndex = index 
-    let timer = (callback) => { 
-        setTimeout(callback, 0) 
-    }
-    
-    if (frameTimer == 'requestAnimationFrame')  {
-        timer = requestAnimationFrame
-        functionDumpCount = 1000
-    }
-
-    if (frameTimer == 'full') { /* only for loop  */
-        timer = null
-        functionDumpCount = max 
-    }
-
-    function makeFunction (count = 50) {
-        const arr = [...Array(count)];
-        
-        const functionStrings = arr.map(countIndex => {
-            return `cri = ri + i * s; if (cri >= mx) return {currentRunIndex: cri, i: null}; c(cri); i++;`
-        }).join('\n')
-
-        const smallLoopFunction = new Function ('ri', 'i', 's', 'mx', 'c', `
-            let cri = ri;
-            
-            ${functionStrings}
-            
-            return {currentRunIndex: cri, i: i} 
-        `)        
-
-        return smallLoopFunction
-    }
-
-    function runCallback () {
-
-        const smallLoopFunction = makeFunction(loopCount) // loop is call  20 callbacks at once 
-
-        let currentRunIndex = runIndex 
-        let ret = {}; 
-        let i = 0 
-        while(i < functionDumpCount) {
-            ret = smallLoopFunction(runIndex, i, step, max, callback)
-
-            if (ret.i == null) {
-                currentRunIndex = ret.currentRunIndex
-                break; 
-            }
-
-            i = ret.i
-            currentRunIndex = ret.currentRunIndex
-        }
-
-        nextCallback(currentRunIndex)
-    }
-
-    function nextCallback (currentRunIndex) {
-        if (currentRunIndex) {
-            runIndex = currentRunIndex
-        } else {
-            runIndex += step 
-        }
-
-        if (runIndex >= max) {
-            done()
-            return;  
-        }
-
-        if (timer) timer(runCallback)
-        else runCallback()
-    }
-
-    runCallback()
-}
 
 export function each(len, callback, done, opt = {}) {
 
@@ -188,6 +86,7 @@ export function eachXY(len, width, callback, done, opt = {}) {
         done()
     }, opt.functionDumpCount, opt.frameTimer, opt.loopCount)
 }
+
 
 export function createRandRange(min, max, count) {
     var result = [];
