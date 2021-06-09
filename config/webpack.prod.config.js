@@ -6,10 +6,12 @@ const webpack = require('webpack'); //to access built-in plugins
 const path = require('path');
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'addon'),
+    library: "EasyLogicGLFilter",
+    libraryTarget: "umd",
+    path: path.resolve(__dirname, '../dist'),
     filename: 'gl-filter.js',
   },
   resolve: {
@@ -31,7 +33,4 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({ template: './src/index.html' }),
-  ],
 };

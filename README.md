@@ -1,24 +1,4 @@
-# Colorpicker With CodeMirror
-
-
-This project was created to implement a color picker. It implemented basic functions for color and implemented image filters.
-
-https://colorpicker.easylogic.studio/
-
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-[![](https://data.jsdelivr.com/v1/package/npm/codemirror-colorpicker/badge)](https://www.jsdelivr.com/package/npm/codemirror-colorpicker)
-
-[![NPM](https://nodei.co/npm/codemirror-colorpicker.png)](https://npmjs.org/package/codemirror-colorpicker)
-
-
-
-# Sample Image 
-
-<img width="500px" src="https://cdn.jsdelivr.net/gh/easylogic/codemirror-colorpicker/resources/image/screen-shot.png" />
-
-
+# WebGL based Image Filter 
 
 
 # Install 
@@ -26,14 +6,9 @@ https://colorpicker.easylogic.studio/
 ## npm 
 
 ```npm
-npm install codemirror-colorpicker
+npm install @easylogic/gl-filter
 ```
-
-## bower 
-
-```
-bower install codemirror-colorpicker 
-```   
+   
    
 # How to use (for  browser) 
 
