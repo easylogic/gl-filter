@@ -8,7 +8,8 @@
     "build": "NODE_ENV=production webpack --config config/webpack.prod.config.js",
     "dev": "NODE_ENV=development webpack serve --port=3000 --config config/webpack.dev.config.js --open",
     "docs": "http-server ./docs",
-    "test": "NODE_ENV=test jest --watch"
+    "test": "NODE_ENV=test jest --watch",
+    "release": "release-it *"
   },
   "repository": {
     "type": "git",
