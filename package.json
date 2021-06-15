@@ -1,6 +1,6 @@
 {
   "name": "@easylogic/gl-filter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "very fast WebGL Image Filter with easylogic",
   "main": "./dist/gl-filter.js",
   "scripts": {
