@@ -24,7 +24,7 @@
   "author": "easylogic",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/easylogic/codemirror-colorpicker/issues"
+    "url": "https://github.com/easylogic/gl-filter/issues"
   },
   "homepage": "https://colorpicker.easylogic.studio/",
   "devDependencies": {
