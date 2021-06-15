@@ -1,6 +1,6 @@
 import Canvas from '../Canvas'
 import Matrix from '../Matrix'
-import Color from '../Color'
+import Color from '@easylogic/color';
 
 let makeId = 0 
 

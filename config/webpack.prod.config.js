@@ -9,8 +9,11 @@ module.exports = {
   mode: "production",
   entry: './src/index.js',
   output: {
-    library: "EasyLogicGLFilter",
-    libraryTarget: "umd",
+    library: {
+      name: 'GLFilter',
+      type: "umd",
+      export: "default"
+    },
     path: path.resolve(__dirname, '../dist'),
     filename: 'gl-filter.js',
   },

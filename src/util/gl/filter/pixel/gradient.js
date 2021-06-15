@@ -1,4 +1,5 @@
-import Color from '../../../Color'
+import Color from '@easylogic/color';
+
 import {
     shader,
     colorToVec4,

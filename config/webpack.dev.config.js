@@ -9,7 +9,11 @@ module.exports = {
   mode: "development",
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'addon'),
+    library: {
+      name: "GLFilter",
+      type: "umd",
+      export: 'default',
+    },
     filename: 'gl-filter.js',
   },
   resolve: {

@@ -1,8 +1,9 @@
+import {format} from '@easylogic/color';
+
 import kmeans from '../Kmeans'
 import ImageLoader from '../ImageLoader'
 import Canvas from '../Canvas'
 import GL from '../GL' 
-import { format } from './formatter'
 
 export function palette(colors, k = 6, exportFormat = 'hex') {
 
